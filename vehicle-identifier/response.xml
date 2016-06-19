@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<response>
+    <bicyle>1</bicyle>
+    <bigwheel>2</bigwheel>
+    <car>1</car>
+    <hangGlider>1</hangGlider>
+    <motorCyle>1</motorCyle>
+    <vehicleInfo>
+        <vehicleId>vehicle 1</vehicleId>
+        <vehicleType>Big Wheel</vehicleType>
+    </vehicleInfo>
+    <vehicleInfo>
+        <vehicleId>vehicle 3</vehicleId>
+        <vehicleType>Motorcycle</vehicleType>
+    </vehicleInfo>
+    <vehicleInfo>
+        <vehicleId>vehicle 4</vehicleId>
+        <vehicleType>Hang Glider</vehicleType>
+    </vehicleInfo>
+    <vehicleInfo>
+        <vehicleId>vehicle 1</vehicleId>
+        <vehicleType>Big Wheel</vehicleType>
+    </vehicleInfo>
+    <vehicleInfo>
+        <vehicleId>vehicle 5</vehicleId>
+        <vehicleType>Car</vehicleType>
+    </vehicleInfo>
+    <vehicleInfo>
+        <vehicleId>vehicle 2</vehicleId>
+        <vehicleType>Bicyle</vehicleType>
+    </vehicleInfo>
+</response>
