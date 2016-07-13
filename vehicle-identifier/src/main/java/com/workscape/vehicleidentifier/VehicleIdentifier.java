@@ -11,11 +11,13 @@ import static com.workscape.vehicleidentifier.VehicleIdentifierConstants.VEHICLE
 import static com.workscape.vehicleidentifier.VehicleIdentifierConstants.VEHICLE_TYPE_HANG_GLIDER;
 import static com.workscape.vehicleidentifier.VehicleIdentifierConstants.VEHICLE_TYPE_MOTORCYCLE;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.bind.JAXBException;
 
+import com.workscape.vehicleidentifier.exception.InvalidInputException;
 import com.workspace.vehicleidentifier.model.Response;
 import com.workspace.vehicleidentifier.model.Vehicle;
 import com.workspace.vehicleidentifier.model.VehicleInfo;
@@ -30,14 +32,13 @@ public class VehicleIdentifier {
 	/**
 	 * This method is used to Identify the vehicle type based on vehicle
 	 * parameters
-	 * 
-	 * @throws JAXBException
+	 * @throws InvalidInputException 
 	 */
-	public Response vehicleIdentifier() {
+	public Response vehicleIdentifier(File file ) throws InvalidInputException {
 		Response responseObj = new Response();
 		try {
-			Vehicles veh = unMarshal();
-			int bigwheel = 0, hangGlider = 0,car = 0,bicyle = 0, motorCyle = 0;
+			Vehicles veh = unMarshal(file);
+			int bigwheel = 0, hangGlider = 0,car = 0,bicycle = 0, motorCyle = 0;
 			List<VehicleInfo> vehicleInfo = new ArrayList<VehicleInfo>();
 			List<Vehicle> vehList = veh.getVehicle();
 			for (Vehicle vehicle : vehList) {
@@ -45,31 +46,31 @@ public class VehicleIdentifier {
 				String material = vehicle.getFrame().getMaterial();
 				int wheelSize = vehicle.getWheels().getWheel().size();
 				String vehicleId = vehicle.getId();
-				if (FRAME_TYPE_PLASTIC.equals(material) && wheelSize == 3) { // Checks frame type plastic with no of wheels
+				if (FRAME_TYPE_PLASTIC.equals(material) && wheelSize == 3 && EMPTY_STRING.equals(vehicle.getPowertrain().getHuman())) { // Checks for vehicle type big wheel
 					response = setVehicleInfo(VEHICLE_TYPE_BIG_WHEEL,vehicleId);
 					bigwheel++;
-				} else if (FRAME_TYPE_PLASTIC.equals(material) && EMPTY_STRING.equals(vehicle.getPowertrain().getBernoulli())) { //Checks frame type plastic with Empty value of Bernoulli as per Vehicles.xml 
+				} else if (FRAME_TYPE_PLASTIC.equals(material) && wheelSize == 1 && EMPTY_STRING.equals(vehicle.getPowertrain().getBernoulli())) { //Checks for vehicle type Hang Glider 
 					response = setVehicleInfo(VEHICLE_TYPE_HANG_GLIDER,vehicleId);
 					hangGlider++;
-				}else if (FRAME_TYPE_METAL.equals(material) && wheelSize == 4) { //Checks frame type plastic with no of wheels 
+				}else if (FRAME_TYPE_METAL.equals(material) && wheelSize == 4 && EMPTY_STRING.equals(vehicle.getPowertrain().getInternalCombustion())) { //Checks for vehicle type Car
 					response = setVehicleInfo(VEHICLE_TYPE_CAR,vehicleId);
 					car++;
-				} else if (FRAME_TYPE_METAL.equals(material)&& EMPTY_STRING.equals(vehicle.getPowertrain().getHuman())) {  // Checks frame type metal with Empty value of human as per Vehicles.xml
+				} else if (FRAME_TYPE_METAL.equals(material) && wheelSize == 2 && EMPTY_STRING.equals(vehicle.getPowertrain().getHuman())) {  // Checks for vehicle type bicycle
 					response = setVehicleInfo(VEHICLE_TYPE_BICYLE,vehicleId);
-					bicyle++;
-				} else if (FRAME_TYPE_METAL.equals(material) && EMPTY_STRING.equals(vehicle.getPowertrain().getInternalCombustion())) { // Checks frame type metal with Empty value of Internal Combustion as per Vehicles.xml
+					bicycle++;
+				} else if (FRAME_TYPE_METAL.equals(material) && wheelSize == 2 && EMPTY_STRING.equals(vehicle.getPowertrain().getInternalCombustion())) { // Checks for vehicle type Motor Cycle
 					response = setVehicleInfo(VEHICLE_TYPE_MOTORCYCLE,vehicleId);
 					motorCyle++;
 				}
 
 				vehicleInfo.add(response);
 			}
-			populateResponseObject(bigwheel, hangGlider, car, bicyle,
+			populateResponseObject(bigwheel, hangGlider, car, bicycle,
 					motorCyle, responseObj, vehicleInfo);
 
 			marshall(responseObj);
 		} catch (JAXBException jaxbException) {
-			jaxbException.printStackTrace();
+			throw new InvalidInputException();
 		}
 		return responseObj;
 	}

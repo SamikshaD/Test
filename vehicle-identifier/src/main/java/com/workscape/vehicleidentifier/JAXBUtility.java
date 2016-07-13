@@ -22,8 +22,8 @@ public final class JAXBUtility {
 	 * @return Vehicles
 	 * @throws JAXBException
 	 */
-	public static Vehicles unMarshal() throws JAXBException {
-			File file = new File("src/main/resources/vehicles.xml");
+	public static Vehicles unMarshal(File file) throws JAXBException {
+			
 			JAXBContext jaxbContext = JAXBContext.newInstance(Vehicles.class);
 			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 			return (Vehicles) jaxbUnmarshaller.unmarshal(file);

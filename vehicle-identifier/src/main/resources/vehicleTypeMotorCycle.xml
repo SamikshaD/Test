@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vehicles>
+	<vehicle>
+		<id>vehicle 3</id>
+		<frame>
+			<material>metal</material>
+		</frame>
+		<wheels>
+			<wheel>
+				<position>rear</position>
+				<material>metal</material>
+			</wheel>
+			<wheel>
+				<position>front</position>
+				<material>metal</material>
+			</wheel>
+		</wheels>
+		<powertrain>
+			<internalCombustion />
+		</powertrain>
+	</vehicle>
+</vehicles>

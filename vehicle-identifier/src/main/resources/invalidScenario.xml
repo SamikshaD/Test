@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vehicles>
+	<vehicle>
+		<id>vehicle 1</id>
+		<frame>
+			<material>metal</material>
+		</frame>
+		<wheels>
+			<wheel>
+				<position>rear left</position>
+				<material>metal</material>
+			</wheel>
+			<wheel>
+				<position>rear right</position>
+				<material>metal</material>
+			</wheel>
+			<wheel>
+				<position>front</position>
+				<material>metal</material>
+			</wheel>
+			</wheels>
+		<powertrain>
+			<bernoulli />
+		</powertrain>
+	</vehicle>
+</vehicles>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vehicles>
+	<vehicle>
+		<id>vehicle 4</id>
+		<frame>
+			<material>plastic</material>
+		</frame>
+		<wheels>
+			<wheel />
+		</wheels>
+		<powertrain>
+			<bernoulli />
+		</powertrain>
+	</vehicle>
+</vehicles>

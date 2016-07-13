@@ -6,7 +6,7 @@ public final class VehicleIdentifierConstants {
 
 	public static final String EMPTY_STRING = "";
 	public static final String VEHICLE_TYPE_MOTORCYCLE = "Motorcycle";
-	public static final String VEHICLE_TYPE_BICYLE = "Bicyle";
+	public static final String VEHICLE_TYPE_BICYLE = "Bicycle";
 	public static final String VEHICLE_TYPE_CAR = "Car";
 	public static final String FRAME_TYPE_METAL = "metal";
 	public static final String VEHICLE_TYPE_HANG_GLIDER = "Hang Glider";

@@ -1,21 +1,22 @@
 package com.workspace.vehicleidentifier.model;
 
-
 public class Vehicle {
-	public Vehicle(){}
+	public Vehicle() {
+	}
 
 	private String id;
 	private Frame frame;
 	private Wheels wheels;
 	private PowerTrain powertrain;
-	
+
 	public PowerTrain getPowertrain() {
 		return powertrain;
 	}
 
 	public void setPowertrain(PowerTrain powertrain) {
 		this.powertrain = powertrain;
-	}	
+	}
+
 	public Frame getFrame() {
 		return frame;
 	}
@@ -23,7 +24,6 @@ public class Vehicle {
 	public void setFrame(Frame frame) {
 		this.frame = frame;
 	}
-
 
 	public Wheels getWheels() {
 		return wheels;
